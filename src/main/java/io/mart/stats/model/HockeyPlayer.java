@@ -2,19 +2,22 @@ package io.mart.stats.model;
 
 public class HockeyPlayer {
 	
-	private int id;
-	private String name;
-	private Nationality nationality;
+	private final int id;
+	private final String name;
+	private final Nationality nationality;
+	private final Position position;
+	
+	
+	public HockeyPlayer(HockeyPlayerBuilder builder) {
+		this.id = builder.id;
+		this.name = builder.name;
+		this.nationality = builder.nationality;
+		this.position = builder.position;
+	}
 	
 	
 	public int getId() {
 		return id;
-	}
-	
-	
-	public HockeyPlayer setId(int id) {
-		this.id = id;
-		return this;
 	}
 	
 	
@@ -23,19 +26,59 @@ public class HockeyPlayer {
 	}
 	
 	
-	public HockeyPlayer setName(String name) {
-		this.name = name;
-		return this;
-	}
-	
-	
 	public Nationality getNationality() {
 		return nationality;
 	}
 	
 	
-	public HockeyPlayer setNationality(Nationality nationality) {
-		this.nationality = nationality;
-		return this;
+	public Position getPosition() {
+		return position;
+	}
+	
+	
+	public static class HockeyPlayerBuilder {
+		
+		private int id;
+		private String name;
+		private Nationality nationality;
+		private Position position;
+		
+		
+		private HockeyPlayerBuilder() {
+		}
+		
+		
+		public static HockeyPlayerBuilder newInstance() {
+			return new HockeyPlayerBuilder();
+		}
+		
+		
+		public HockeyPlayerBuilder id(int id) {
+			this.id = id;
+			return this;
+		}
+		
+		
+		public HockeyPlayerBuilder name(String name) {
+			this.name = name;
+			return this;
+		}
+		
+		
+		public HockeyPlayerBuilder nationality(Nationality nationality) {
+			this.nationality = nationality;
+			return this;
+		}
+		
+		
+		public HockeyPlayerBuilder position(Position position) {
+			this.position = position;
+			return this;
+		}
+		
+		
+		public HockeyPlayer build() {
+			return new HockeyPlayer(this);
+		}
 	}
 }
