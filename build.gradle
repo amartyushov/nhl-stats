@@ -10,9 +10,13 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+	flatDir {
+		dirs 'libs'
+	}
 }
 
 dependencies {
+	implementation name: 'swagger-java-client-1.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
