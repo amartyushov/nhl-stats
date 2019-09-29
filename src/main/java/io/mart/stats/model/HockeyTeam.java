@@ -2,10 +2,8 @@ package io.mart.stats.model;
 
 import java.util.List;
 
-import io.swagger.client.model.Player;
 
-
-public class Team {
+public class HockeyTeam {
 	
 	private int id;
 	private String name;
@@ -17,7 +15,7 @@ public class Team {
 	}
 	
 	
-	public Team setId(int id) {
+	public HockeyTeam setId(int id) {
 		this.id = id;
 		return this;
 	}
@@ -28,7 +26,7 @@ public class Team {
 	}
 	
 	
-	public Team setName(String name) {
+	public HockeyTeam setName(String name) {
 		this.name = name;
 		return this;
 	}
