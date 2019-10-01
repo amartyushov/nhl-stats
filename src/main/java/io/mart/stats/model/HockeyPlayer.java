@@ -5,17 +5,13 @@ import io.mart.stats.model.enums.Position;
 
 public class HockeyPlayer {
 	
-	private final int id;
-	private final String name;
-	private final Nationality nationality;
-	private final Position position;
+	private int id;
+	private String name;
+	private Nationality nationality;
+	private Position position;
 	
 	
-	public HockeyPlayer(HockeyPlayerBuilder builder) {
-		this.id = builder.id;
-		this.name = builder.name;
-		this.nationality = builder.nationality;
-		this.position = builder.position;
+	public HockeyPlayer() {
 	}
 	
 	
@@ -39,49 +35,26 @@ public class HockeyPlayer {
 	}
 	
 	
-	public static class HockeyPlayerBuilder {
-		
-		private int id;
-		private String name;
-		private Nationality nationality;
-		private Position position;
-		
-		
-		private HockeyPlayerBuilder() {
-		}
-		
-		
-		public static HockeyPlayerBuilder newInstance() {
-			return new HockeyPlayerBuilder();
-		}
-		
-		
-		public HockeyPlayerBuilder id(int id) {
-			this.id = id;
-			return this;
-		}
-		
-		
-		public HockeyPlayerBuilder name(String name) {
-			this.name = name;
-			return this;
-		}
-		
-		
-		public HockeyPlayerBuilder nationality(Nationality nationality) {
-			this.nationality = nationality;
-			return this;
-		}
-		
-		
-		public HockeyPlayerBuilder position(Position position) {
-			this.position = position;
-			return this;
-		}
-		
-		
-		public HockeyPlayer build() {
-			return new HockeyPlayer(this);
-		}
+	public HockeyPlayer setId(int id) {
+		this.id = id;
+		return this;
+	}
+	
+	
+	public HockeyPlayer setName(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	
+	public HockeyPlayer setNationality(Nationality nationality) {
+		this.nationality = nationality;
+		return this;
+	}
+	
+	
+	public HockeyPlayer setPosition(Position position) {
+		this.position = position;
+		return this;
 	}
 }
