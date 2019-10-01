@@ -4,6 +4,20 @@ public enum Nationality {
 	
 	FIN,
 	RUS,
-	CAN
+	CAN,
+	USA,
+	SVN,
+	SVK,
+	CZE,
+	CHE,
+	LVA,
+	SWE,
+	DEU,
+	FRA,
+	DNK,
+	GBR,
+	AUT,
+	NOR,
+	NLD
 	
 }
