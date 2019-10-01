@@ -1,12 +1,19 @@
 package io.mart.stats.model.enums;
 
+import java.math.BigDecimal;
+
 public enum Seasons {
-	CURRENT("");
+	CURRENT(null);
 	
-	private String seasonAsString;
+	private BigDecimal seasonAsDecimal;
 	
 	
-	Seasons(String s) {
-		seasonAsString = s;
+	Seasons(BigDecimal s) {
+		seasonAsDecimal = s;
+	}
+	
+	
+	public BigDecimal get() {
+		return seasonAsDecimal;
 	}
 }
