@@ -1,4 +1,4 @@
-package io.mart.stats.model.enums;
+package io.mart.stats.entities.enums;
 
 import java.math.BigDecimal;
 

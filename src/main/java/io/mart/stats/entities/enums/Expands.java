@@ -1,4 +1,4 @@
-package io.mart.stats.model.enums;
+package io.mart.stats.entities.enums;
 
 public enum Expands {
 	

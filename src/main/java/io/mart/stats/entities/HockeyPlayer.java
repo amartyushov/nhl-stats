@@ -1,7 +1,7 @@
-package io.mart.stats.model;
+package io.mart.stats.entities;
 
-import io.mart.stats.model.enums.Nationality;
-import io.mart.stats.model.enums.Position;
+import io.mart.stats.entities.enums.Nationality;
+import io.mart.stats.entities.enums.Position;
 
 public class HockeyPlayer {
 	
