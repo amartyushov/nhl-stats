@@ -1,6 +1,8 @@
 package io.mart.stats.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import io.mart.stats.entities.enums.Nationality;
@@ -18,7 +20,9 @@ public class HockeyPlayer extends AuditModel {
 	@Id
 	private int id;
 	private String name;
+	@Enumerated(EnumType.STRING)
 	private Nationality nationality;
+	@Enumerated(EnumType.STRING)
 	private Position position;
 	
 }
