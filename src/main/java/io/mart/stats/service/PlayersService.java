@@ -9,6 +9,7 @@ import java.util.Map;
 
 import io.mart.stats.converters.PlayerConverter;
 import io.mart.stats.entities.HockeyPlayer;
+import io.mart.stats.entities.enums.Nationality;
 import io.mart.stats.entities.enums.Seasons;
 import io.mart.stats.repository.PlayerRepository;
 import io.swagger.client.ApiException;
@@ -48,9 +49,11 @@ public class PlayersService {
 	
 	
 	public Collection<HockeyPlayer> getAllPlayers() {
-		teamService.getTeams().forEach(team -> populatePlayerIds(team.getId()));
-		playerMap.keySet().forEach(this::createFinalizedPlayer);
-		playerRepository.saveAll(playerMap.values());
+		if (playerMap.isEmpty()) {
+			teamService.getTeams().forEach(team -> populatePlayerIds(team.getId()));
+			playerMap.keySet().forEach(this::createFinalizedPlayer);
+			playerRepository.saveAll(playerMap.values());
+		}
 		return playerMap.values();
 	}
 	
@@ -82,4 +85,7 @@ public class PlayersService {
 	}
 	
 	
+	public List<HockeyPlayer> getPlayersByCountry(Nationality country) {
+		return playerRepository.findAllByNationality(country);
+	}
 }

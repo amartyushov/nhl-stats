@@ -19,8 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
-		value = { "createdAt", "updatedAt" },
-		allowGetters = true
+		value = { "createdAt", "updatedAt", "id" }
 )
 @Getter
 @Setter
