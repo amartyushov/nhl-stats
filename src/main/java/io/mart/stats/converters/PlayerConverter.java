@@ -1,26 +1,18 @@
 package io.mart.stats.converters;
 
-import io.mart.stats.exceptions.ConverterException;
 import io.mart.stats.model.HockeyPlayer;
 import io.mart.stats.model.enums.Nationality;
 import io.mart.stats.model.enums.Position;
 import io.swagger.client.model.Player;
+import org.springframework.stereotype.Service;
 
-public class PlayerConverter implements Converter<Player, HockeyPlayer.HockeyPlayerBuilder> {
+@Service
+public class PlayerConverter {
 	
-	@Override
-	public Player toSwagger(HockeyPlayer.HockeyPlayerBuilder hockeyPlayerBuilder) {
-		throw new ConverterException("Not impl");
-	}
-	
-	
-	@Override
-	public HockeyPlayer.HockeyPlayerBuilder fromSwagger(Player player) {
-		return HockeyPlayer.HockeyPlayerBuilder
-				.newInstance()
-				.id(player.getId().intValue())
-				.name(player.getFullName())
-				.nationality(Nationality.valueOf(player.getNationality()))
-				.position(Position.valueOf(player.getPrimaryPosition().getAbbreviation()));
+	public HockeyPlayer fromRoster(Player player) {
+		return new HockeyPlayer().setId(player.getId().intValue())
+				.setName(player.getFullName())
+				.setPosition(Position.valueOf(player.getPrimaryPosition().getAbbreviation()))
+				.setNationality(Nationality.valueOf(player.getNationality()));
 	}
 }
