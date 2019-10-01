@@ -1,6 +1,6 @@
 package io.mart.stats.converters;
 
-import io.mart.stats.model.HockeyTeam;
+import io.mart.stats.entities.HockeyTeam;
 import io.swagger.client.model.Team;
 import org.springframework.stereotype.Service;
 
