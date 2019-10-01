@@ -1,5 +1,8 @@
 package io.mart.stats.model;
 
+import io.mart.stats.model.enums.Nationality;
+import io.mart.stats.model.enums.Position;
+
 public class HockeyPlayer {
 	
 	private final int id;

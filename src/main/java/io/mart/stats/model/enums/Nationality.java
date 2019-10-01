@@ -1,4 +1,4 @@
-package io.mart.stats.model;
+package io.mart.stats.model.enums;
 
 public enum Nationality {
 	
