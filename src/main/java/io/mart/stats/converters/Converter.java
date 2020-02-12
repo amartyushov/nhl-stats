@@ -1,9 +1,8 @@
 package io.mart.stats.converters;
 
-public interface Converter<SWAGGER, INTERNAL> {
+public interface Converter<Entity, Dto> {
 	
-	SWAGGER toSwagger(INTERNAL internal);
+	Dto toDto(Entity entity);
 	
-	INTERNAL fromSwagger(SWAGGER swagger);
-	
+	Entity toEntity(Dto dto);
 }

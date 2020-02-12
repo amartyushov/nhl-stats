@@ -1,24 +1,34 @@
 package io.mart.stats.controller;
 
-import io.swagger.client.ApiException;
-import io.swagger.client.api.GamesApi;
-import io.swagger.client.api.ScheduleApi;
-import io.swagger.client.model.Schedule;
+import java.util.List;
+
+import io.mart.stats.dto.GameDTO;
+import io.mart.stats.processor.game.GameIdProcessor;
+import org.openapi.api.ScheduleApi;
+import org.openapi.invoker.ApiException;
+import org.openapi.model.Schedule;
+import org.openapi.model.ScheduleDay;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class GameController {
 	
-	GamesApi gamesApi = new GamesApi();
+	private final GameIdProcessor processor;
 	ScheduleApi scheduleApi = new ScheduleApi();
-
-	@GetMapping("/games")
-	public @ResponseBody Object games() throws ApiException {
-		Schedule schedule = scheduleApi.getSchedule(null, null, null, null);
-		return schedule.getDates().get(0).getGames().get(0).getContent();
+	
+	
+	public GameController(GameIdProcessor processor) {
+		this.processor = processor;
 	}
-
+	
+	
+	@GetMapping("/games")
+	public List<GameDTO> getAll() throws ApiException {
+		Schedule schedule = scheduleApi.getSchedule(null, null, null, null);
+		ScheduleDay day = schedule.getDates().iterator().next();
+		List<GameDTO> result = processor.process(day.getGames());
+		return result;
+	}
 	
 }

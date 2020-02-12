@@ -18,6 +18,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+// TODO do we need any info about json here?
 @JsonIgnoreProperties(
 		value = { "createdAt", "updatedAt", "id" }
 )
