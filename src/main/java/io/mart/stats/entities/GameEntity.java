@@ -28,4 +28,10 @@ public class GameEntity extends AuditModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column
 	private Date date;
+	
+	@Column
+	private Integer away;
+	
+	@Column
+	private Integer home;
 }

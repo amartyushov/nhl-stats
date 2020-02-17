@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import io.mart.stats.converters.GameConverter;
 import io.mart.stats.dto.GameDTO;
@@ -18,6 +19,7 @@ public class GameServiceImpl implements GameService {
 	
 	private final GameRepository gameRepository;
 	private final GameConverter gameConverter;
+	private Supplier<ConverterException> exception;
 	
 	
 	@Autowired
@@ -38,14 +40,27 @@ public class GameServiceImpl implements GameService {
 	
 	@Override
 	public GameDTO updateWithDate(BigDecimal id, OffsetDateTime date) {
+		exception = () -> new ConverterException("No game found with id " + id);
+		
 		Optional<GameEntity> gameEntity = Optional.ofNullable(gameRepository
 				.findById(id)
 				.map(entity -> entity.setDate(Date.from(date.toInstant())))
-				.orElseThrow(() -> new RuntimeException("No game found with id " + id)));
+				.orElseThrow(exception));
 		
 		gameEntity.ifPresent(gameRepository::save);
-		return gameConverter.toDto(
-				gameEntity.orElseThrow(
-						() -> new ConverterException("no entity found for " + id)));
+		return gameConverter.toDto(gameEntity.orElseThrow(exception));
+	}
+	
+	
+	@Override
+	public GameDTO updateWithScore(BigDecimal id, Integer away, Integer home) {
+		exception = () -> new ConverterException("No game found with id " + id);
+		Optional<GameEntity> gameEntity = Optional.ofNullable(gameRepository.findById(id)
+				.map(game -> game.setAway(away))
+				.map(g -> g.setHome(home))
+				.orElseThrow(exception));
+		
+		gameEntity.ifPresent(gameRepository::save);
+		return gameConverter.toDto(gameEntity.orElseThrow(exception));
 	}
 }

@@ -15,6 +15,8 @@ public class GameConverter implements Converter<GameEntity, GameDTO> {
 		GameDTO dto = new GameDTO();
 		Optional.ofNullable(gameEntity.getId()).ifPresent(dto::setId);
 		Optional.ofNullable(gameEntity.getDate()).ifPresent(v -> dto.setDate(v.toInstant().atOffset(ZoneOffset.UTC)));
+		Optional.ofNullable(gameEntity.getAway()).ifPresent(dto::setAwayScore);
+		Optional.ofNullable(gameEntity.getHome()).ifPresent(dto::setHomeScore);
 		return dto;
 	}
 	

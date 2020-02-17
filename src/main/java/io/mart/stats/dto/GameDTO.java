@@ -18,7 +18,17 @@ public class GameDTO {
 	private BigDecimal id;
 	private TeamDTO homeTeam;
 	private TeamDTO awayTeam;
-	private ScoreDTO core;
+	private ScoreDTO score = new ScoreDTO();
 	private OffsetDateTime date;
+	
+	
+	public void setAwayScore(Integer away) {
+		score.setAway(away);
+	}
+	
+	
+	public void setHomeScore(Integer home) {
+		score.setHome(home);
+	}
 	
 }

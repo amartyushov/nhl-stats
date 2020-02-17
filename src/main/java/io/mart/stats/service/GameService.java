@@ -11,4 +11,6 @@ public interface GameService {
 	
 	GameDTO updateWithDate(BigDecimal id, OffsetDateTime date);
 	
+	GameDTO updateWithScore(BigDecimal id, Integer away, Integer home);
+	
 }
