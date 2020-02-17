@@ -1,16 +1,22 @@
 package io.mart.stats.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 @Getter
 @Setter
+@Accessors(chain = true)
 @NoArgsConstructor
 @Entity(name = "games")
 public class GameEntity extends AuditModel {
@@ -19,4 +25,7 @@ public class GameEntity extends AuditModel {
 	@Digits(integer = 10, fraction = 0)
 	private BigDecimal id;
 	
+	@Temporal(TemporalType.DATE)
+	@Column
+	private Date date;
 }

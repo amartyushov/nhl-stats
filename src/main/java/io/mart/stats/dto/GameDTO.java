@@ -1,7 +1,7 @@
 package io.mart.stats.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -19,6 +19,6 @@ public class GameDTO {
 	private TeamDTO homeTeam;
 	private TeamDTO awayTeam;
 	private ScoreDTO core;
-	private Date date;
+	private OffsetDateTime date;
 	
 }
