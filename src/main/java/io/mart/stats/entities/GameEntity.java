@@ -25,7 +25,7 @@ public class GameEntity extends AuditModel {
 	@Digits(integer = 10, fraction = 0)
 	private BigDecimal id;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column
 	private Date date;
 }
