@@ -32,7 +32,7 @@ public class GameServiceImpl implements GameService {
 	@Override
 	public GameDTO createWithId(BigDecimal id) {
 		GameEntity gameEntity = new GameEntity();
-		gameEntity.setId(id);
+		gameEntity.setGameId(id);
 		GameEntity savedEntity = gameRepository.save(gameEntity);
 		return gameConverter.toDto(savedEntity);
 	}
@@ -56,8 +56,8 @@ public class GameServiceImpl implements GameService {
 	public GameDTO updateWithScore(BigDecimal id, Integer away, Integer home) {
 		exception = () -> new ConverterException("No game found with id " + id);
 		Optional<GameEntity> gameEntity = Optional.ofNullable(gameRepository.findById(id)
-				.map(game -> game.setAway(away))
-				.map(g -> g.setHome(home))
+				.map(game -> game.setAwayScore(away))
+				.map(g -> g.setHomeScore(home))
 				.orElseThrow(exception));
 		
 		gameEntity.ifPresent(gameRepository::save);

@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 @JsonInclude(Include.NON_NULL)
 public class GameDTO {
 	
-	private BigDecimal id;
+	private BigDecimal gameId;
 	private TeamDTO homeTeam;
 	private TeamDTO awayTeam;
 	private ScoreDTO score = new ScoreDTO();

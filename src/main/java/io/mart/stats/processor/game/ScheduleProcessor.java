@@ -16,7 +16,7 @@ public class ScheduleProcessor {
 		
 		List<ScheduleGame> games = day.getGames();
 		games.stream().forEach(game -> {
-			GameDTO gameDTO = new GameDTO().setId(game.getGamePk());
+			GameDTO gameDTO = new GameDTO().setGameId(game.getGamePk());
 			gamesDtos.add(gameDTO);
 		});
 		return gamesDtos;
