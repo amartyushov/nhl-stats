@@ -18,8 +18,8 @@ public class GameConverter implements Converter<GameEntity, GameDTO> {
 		Optional.ofNullable(gameEntity.getAwayScore()).ifPresent(dto::setAwayScore);
 		Optional.ofNullable(gameEntity.getHomeScore()).ifPresent(dto::setHomeScore);
 		
-		Optional.ofNullable(gameEntity.getAwayTeam()).ifPresent(awayTeam -> dto.setAwayTeamId(awayTeam.getId()));
-		Optional.ofNullable(gameEntity.getHomeTeam()).ifPresent(homeTeam -> dto.setHomeTeamId(homeTeam.getId()));
+		Optional.ofNullable(gameEntity.getAwayTeam()).ifPresent(awayTeam -> dto.setAwayTeamId(awayTeam.getTeamId()));
+		Optional.ofNullable(gameEntity.getHomeTeam()).ifPresent(homeTeam -> dto.setHomeTeamId(homeTeam.getTeamId()));
 		return dto;
 	}
 	

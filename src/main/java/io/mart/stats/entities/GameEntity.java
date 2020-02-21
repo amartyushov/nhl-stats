@@ -2,7 +2,6 @@ package io.mart.stats.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,12 +42,12 @@ public class GameEntity extends AuditModel {
 	@Column(name = "home_score")
 	private Integer homeScore;
 	
-	@ManyToOne(cascade = { CascadeType.PERSIST })
-	@JoinColumn(name = "away_team_id")
+	@ManyToOne
+	@JoinColumn(name = "away_team_id", referencedColumnName = "team_id")
 	private TeamEntity awayTeam;
 	
-	@ManyToOne(cascade = { CascadeType.PERSIST })
-	@JoinColumn(name = "home_team_id")
+	@ManyToOne
+	@JoinColumn(name = "home_team_id", referencedColumnName = "team_id")
 	private TeamEntity homeTeam;
 	
 }
