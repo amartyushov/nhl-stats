@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.mart.stats.dto.GameDTO;
-import io.mart.stats.service.GameService;
+import io.mart.stats.service.game.GameService;
 import org.openapi.model.ScheduleGame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;

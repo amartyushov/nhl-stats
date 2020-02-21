@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-@Order(2)
 @Component
-public class GameDateProcessor implements GameProcessor {
+@Order(2)
+public class GameTeamsProcessor implements GameProcessor {
 	
 	private final GameService gameService;
 	
 	
 	@Autowired
-	public GameDateProcessor(GameService gameService) {
+	public GameTeamsProcessor(GameService gameService) {
 		this.gameService = gameService;
 	}
 	
@@ -26,8 +26,10 @@ public class GameDateProcessor implements GameProcessor {
 	@Override
 	public List<GameDTO> process(List<ScheduleGame> rawGames) {
 		return rawGames.stream()
-				.map(game -> gameService.updateWithDate(game.getGamePk(), game.getGameDate()))
+				.map(rawGame -> gameService.updateWithTeams(
+						rawGame.getGamePk(),
+						rawGame.getTeams().getAway().getTeam().getId().intValue(),
+						rawGame.getTeams().getHome().getTeam().getId().intValue()))
 				.collect(Collectors.toList());
 	}
-	
 }

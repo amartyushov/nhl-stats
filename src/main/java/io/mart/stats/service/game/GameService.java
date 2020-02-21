@@ -1,4 +1,4 @@
-package io.mart.stats.service;
+package io.mart.stats.service.game;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -13,4 +13,5 @@ public interface GameService {
 	
 	GameDTO updateWithScore(BigDecimal id, Integer away, Integer home);
 	
+	GameDTO updateWithTeams(BigDecimal id, Integer awayTeamId, Integer homeTeamId);
 }

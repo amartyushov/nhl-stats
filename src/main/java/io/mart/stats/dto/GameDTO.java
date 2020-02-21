@@ -16,8 +16,8 @@ import lombok.experimental.Accessors;
 public class GameDTO {
 	
 	private BigDecimal gameId;
-	private TeamDTO homeTeam;
-	private TeamDTO awayTeam;
+	private TeamDTO homeTeam = new TeamDTO();
+	private TeamDTO awayTeam = new TeamDTO();
 	private ScoreDTO score = new ScoreDTO();
 	private OffsetDateTime date;
 	
@@ -29,6 +29,16 @@ public class GameDTO {
 	
 	public void setHomeScore(Integer home) {
 		score.setHome(home);
+	}
+	
+	
+	public void setAwayTeamId(Integer id) {
+		awayTeam.setId(id);
+	}
+	
+	
+	public void setHomeTeamId(Integer id) {
+		homeTeam.setId(id);
 	}
 	
 }
