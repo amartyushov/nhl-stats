@@ -37,9 +37,14 @@ public class GameServiceImpl implements GameService {
 	
 	@Override
 	public GameDTO createWithId(BigDecimal id) {
-		GameEntity gameEntity = new GameEntity();
-		gameEntity.setGameId(id);
-		GameEntity savedEntity = gameRepository.save(gameEntity);
+		Optional<GameEntity> gameEntity = gameRepository.findByGameId(id);
+		if (gameEntity.isPresent()) {
+			return gameConverter.toDto(gameEntity.get());
+		}
+		
+		GameEntity freshEntity = new GameEntity();
+		freshEntity.setGameId(id);
+		GameEntity savedEntity = gameRepository.save(freshEntity);
 		return gameConverter.toDto(savedEntity);
 	}
 	
