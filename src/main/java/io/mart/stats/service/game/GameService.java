@@ -2,10 +2,13 @@ package io.mart.stats.service.game;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import io.mart.stats.dto.GameDTO;
 
 public interface GameService {
+	
+	List<GameDTO> getAll();
 	
 	GameDTO createWithId(BigDecimal id);
 	
