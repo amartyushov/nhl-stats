@@ -1,5 +1,6 @@
 package io.mart.stats.converters;
 
+import java.util.Optional;
 import java.util.Set;
 
 import io.mart.stats.dto.PlayerDTO;
@@ -53,8 +54,12 @@ public class PlayerConverter implements Converter<PlayerEntity, PlayerDTO> {
 				.setJerseyNumber(playerDTO.getJerseyNumber())
 				.setPosition(playerDTO.getPosition());
 		
-		TeamEntity teamEntity = teamConverter.toEntity(playerDTO.getTeam());
-		playerEntity.setTeam(teamEntity);
+		TeamDTO team = playerDTO.getTeam();
+		if (team != null) {
+			Optional<TeamEntity> teamEntity = teamRepository.findByTeamId(team.getId());
+			teamEntity.ifPresent(playerEntity::setTeam);
+		}
+		
 		return playerEntity;
 	}
 }

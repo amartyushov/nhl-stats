@@ -22,7 +22,7 @@ public class TeamController {
 	}
 	
 	
-	@GetMapping("/teams")
+	@GetMapping("/populate/teams")
 	public List<TeamDTO> getAll() throws ApiException {
 		Teams teams = teamsApi.getTeams("team.roster", null);
 		return processor.process(teams.getTeams());
