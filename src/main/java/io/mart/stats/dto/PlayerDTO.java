@@ -19,5 +19,5 @@ public class PlayerDTO {
 	private String fullName;
 	private Integer jerseyNumber;
 	private Position position;
-	
+	private TeamDTO team;
 }

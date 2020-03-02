@@ -20,6 +20,10 @@ public class TeamConverter implements Converter<TeamEntity, TeamDTO> {
 	
 	@Override
 	public TeamEntity toEntity(TeamDTO teamDTO) {
-		throw new RuntimeException("Not implemented");
+		TeamEntity entity = new TeamEntity();
+		entity
+				.setTeamId(teamDTO.getId())
+				.setName(teamDTO.getName());
+		return entity;
 	}
 }

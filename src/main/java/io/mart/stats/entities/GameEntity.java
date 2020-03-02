@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,11 +44,17 @@ public class GameEntity extends AuditModel {
 	private Integer homeScore;
 	
 	@ManyToOne
-	@JoinColumn(name = "away_team_id", referencedColumnName = "team_id")
+	@JoinColumn(
+			name = "away_team_id",
+			referencedColumnName = "team_id",
+			foreignKey = @ForeignKey(name = "FK_team_id_away"))
 	private TeamEntity awayTeam;
 	
 	@ManyToOne
-	@JoinColumn(name = "home_team_id", referencedColumnName = "team_id")
+	@JoinColumn(
+			name = "home_team_id",
+			referencedColumnName = "team_id",
+			foreignKey = @ForeignKey(name = "FK_team_id_home"))
 	private TeamEntity homeTeam;
 	
 }
