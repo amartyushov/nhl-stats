@@ -22,23 +22,27 @@ public class GameDTO {
 	private OffsetDateTime date;
 	
 	
-	public void setAwayScore(Integer away) {
+	public GameDTO setAwayScore(Integer away) {
 		score.setAway(away);
+		return this;
 	}
 	
 	
-	public void setHomeScore(Integer home) {
+	public GameDTO setHomeScore(Integer home) {
 		score.setHome(home);
+		return this;
 	}
 	
 	
-	public void setAwayTeamId(Integer id) {
+	public GameDTO setAwayTeamId(Integer id) {
 		awayTeam.setId(id);
+		return this;
 	}
 	
 	
-	public void setHomeTeamId(Integer id) {
+	public GameDTO setHomeTeamId(Integer id) {
 		homeTeam.setId(id);
+		return this;
 	}
 	
 }

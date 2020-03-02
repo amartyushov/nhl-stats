@@ -24,7 +24,7 @@ public class TeamController {
 	
 	@GetMapping("/teams")
 	public List<TeamDTO> getAll() throws ApiException {
-		Teams teams = teamsApi.getTeams(null, null);
+		Teams teams = teamsApi.getTeams("team.roster", null);
 		return processor.process(teams.getTeams());
 	}
 	

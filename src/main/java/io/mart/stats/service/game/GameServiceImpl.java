@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 import io.mart.stats.converters.GameConverter;
 import io.mart.stats.dto.GameDTO;
+import io.mart.stats.dto.TeamDTO;
 import io.mart.stats.entities.GameEntity;
 import io.mart.stats.entities.TeamEntity;
 import io.mart.stats.exceptions.ConverterException;
@@ -37,6 +39,38 @@ public class GameServiceImpl implements GameService {
 		this.gameRepository = gameRepository;
 		this.gameConverter = gameConverter;
 		this.teamRepository = teamRepository;
+	}
+	
+	
+	@Override
+	public GameDTO create(GameDTO game) {
+		GameEntity gameEntity = gameConverter.toEntity(game);
+		
+		Optional<TeamEntity> awayTeam = Stream.of(game.getAwayTeam())
+				.map(TeamDTO::getId)
+				.map(teamRepository::findByTeamId)
+				.findFirst().orElseGet(Optional::empty);
+		Optional<TeamEntity> homeTeam = Stream.of(game.getHomeTeam())
+				.map(TeamDTO::getId)
+				.map(teamRepository::findByTeamId)
+				.findFirst().orElseGet(Optional::empty);
+		
+		awayTeam.ifPresent(gameEntity::setAwayTeam);
+		homeTeam.ifPresent(gameEntity::setHomeTeam);
+		
+		GameEntity savedEntity = gameRepository.save(gameEntity);
+		return gameConverter.toDto(savedEntity);
+	}
+	
+	
+	@Override
+	public GameDTO get(BigDecimal gameId) {
+		return Stream.of(gameRepository.findByGameId(gameId))
+				.filter(Optional::isPresent)
+				.map(Optional::get)
+				.map(gameConverter::toDto)
+				.findFirst()
+				.orElse(null);
 	}
 	
 	

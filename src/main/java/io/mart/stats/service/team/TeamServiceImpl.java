@@ -1,6 +1,9 @@
 package io.mart.stats.service.team;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import io.mart.stats.converters.TeamConverter;
 import io.mart.stats.dto.TeamDTO;
@@ -31,5 +34,14 @@ public class TeamServiceImpl implements TeamService {
 				.setName(name);
 		TeamEntity savedEntity = repository.save(entity);
 		return converter.toDto(savedEntity);
+	}
+	
+	
+	@Override
+	public List<TeamDTO> getTeams() {
+		Iterable<TeamEntity> allTeams = repository.findAll();
+		return StreamSupport.stream(allTeams.spliterator(), false)
+				.map(converter::toDto)
+				.collect(Collectors.toList());
 	}
 }

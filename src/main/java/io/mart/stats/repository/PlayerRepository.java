@@ -1,12 +1,8 @@
 package io.mart.stats.repository;
 
-import java.util.List;
-
-import io.mart.stats.entities.HockeyPlayer;
-import io.mart.stats.entities.enums.Nationality;
+import io.mart.stats.entities.PlayerEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface PlayerRepository extends CrudRepository<HockeyPlayer, Integer> {
+public interface PlayerRepository extends CrudRepository<PlayerEntity, Integer> {
 	
-	List<HockeyPlayer> findAllByNationality(Nationality nationality);
 }

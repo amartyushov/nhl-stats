@@ -19,15 +19,15 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class GameController {
 	
-	private final GameProcessors processor;
+	private final GameProcessors gameProcessors;
 	private final GameService gameService;
 	ScheduleApi scheduleApi = new ScheduleApi();
 	
 	
 	public GameController(
-			GameProcessors processor,
+			GameProcessors gameProcessors,
 			GameService gameService) {
-		this.processor = processor;
+		this.gameProcessors = gameProcessors;
 		this.gameService = gameService;
 	}
 	
@@ -45,7 +45,7 @@ public class GameController {
 	private List<GameDTO> populateForMeasure() throws ApiException {
 		Schedule schedule = scheduleApi.getSchedule(null, null, null, null);
 		ScheduleDay day = schedule.getDates().iterator().next();
-		return processor.process(day.getGames());
+		return gameProcessors.process(day.getGames());
 	}
 	
 	

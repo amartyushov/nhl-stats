@@ -1,6 +1,7 @@
 package io.mart.stats.converters;
 
 import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.Optional;
 
 import io.mart.stats.dto.GameDTO;
@@ -24,8 +25,23 @@ public class GameConverter implements Converter<GameEntity, GameDTO> {
 	}
 	
 	
+	/**
+	 * Teams are not converted here, because it requires repository look up
+	 *
+	 * @param gameDTO
+	 * @return
+	 */
 	@Override
 	public GameEntity toEntity(GameDTO gameDTO) {
-		throw new RuntimeException("Converter not implemented");
+		GameEntity entity = new GameEntity();
+		Optional.ofNullable(gameDTO.getGameId()).ifPresent(entity::setGameId);
+		Optional.ofNullable(gameDTO.getDate()).ifPresent(d -> {
+			long milis = d.toInstant().toEpochMilli();
+			entity.setDate(new Date(milis));
+		});
+		
+		Optional.ofNullable(gameDTO.getScore().getAway()).ifPresent(entity::setAwayScore);
+		Optional.ofNullable(gameDTO.getScore().getHome()).ifPresent(entity::setHomeScore);
+		return entity;
 	}
 }

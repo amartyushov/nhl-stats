@@ -8,6 +8,10 @@ import io.mart.stats.dto.GameDTO;
 
 public interface GameService {
 	
+	GameDTO create(GameDTO game);
+	
+	GameDTO get(BigDecimal gameId);
+	
 	List<GameDTO> getAll();
 	
 	GameDTO createWithId(BigDecimal id);
