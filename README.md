@@ -12,3 +12,5 @@ Generate client sources: `./gradlew openApiGenerate`
 Build client: `cd build/generated; gradle build`  
 Copy generated client to `libs`  
 
+# plantuml integration experiment
+![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/amartyushov/nhl-stats/master/docs/experiment.iuml)
