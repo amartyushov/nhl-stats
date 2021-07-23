@@ -15,4 +15,7 @@ Copy generated client to `libs`
 # plantuml integration experiment
 ![your-UML-diagram-name](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/amartyushov/nhl-stats/master/docs/experiment.iuml)
 
+![from-root](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/amartyushov/nhl-stats/master/first-experiment.iuml)
+
 ![from-example](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/jonashackt/plantuml-markdown/master/example-uml.iuml)
+
